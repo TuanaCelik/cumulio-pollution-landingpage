@@ -1,0 +1,25 @@
+{
+  "name": "cumulio-pollution-landingpage",
+  "version": "1.0.0",
+  "description": "Landing Page for the Demo Cumul.io Pollution Plugin",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuanaCelik/cumulio-pollution-landingpage.git"
+  },
+  "author": "Tuana Celik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TuanaCelik/cumulio-pollution-landingpage/issues"
+  },
+  "homepage": "https://github.com/TuanaCelik/cumulio-pollution-landingpage#readme",
+  "dependencies": {
+    "cumulio": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
