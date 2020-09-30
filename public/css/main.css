@@ -4,6 +4,11 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+#content {
+  height: 100%;
+  display: flex;
+}
+
 #sidebar {
   position: absolute;
   left: 0;
@@ -26,6 +31,21 @@ body {
   width: 100%;
 }
 
+#overlay {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: rgba(0,0,0,.4);
+  cursor: pointer;
+}
+
+#overlay.open {
+  display: block;
+}
 .page-title {
   opacity: 0.8;
   font-size: 2rem;
@@ -37,13 +57,13 @@ body {
 .dashboard-outer-container {
   flex: 1 1 auto;
   padding: 1rem;
-  background-color: #eef3f6;
+  background-color: #c9d7d8;
   overflow: auto;
 }
 
 /* Sidebar styling */
 #sidebar {
-  background: #004cb7;
+  background: #529483;
   overflow: auto;
   user-select: none;
 }
@@ -96,4 +116,47 @@ body {
 #sidebar .label {
   letter-spacing: 0.0625rem;
   line-height: 2.5rem;
+}
+
+.language-btn {
+  padding: 0.25rem 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex: 1 0 auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #064139;
+  cursor: pointer;
+  border-radius: 0.25rem !important;
+  transition: background-color 0.3s ease;
+}
+.language-btn:hover,
+.language-btn.active {
+  background-color: white;
+}
+
+/* Media queries */
+@media (min-width: 992px) {
+  #sidebar {
+    position: relative;
+    /* height: 100%; */
+    flex: 0 0 20rem;
+    left: 0;
+    top: auto;
+    bottom: auto;
+    transform: translateX(0) !important;
+    transition: none !important;
+  }
+
+  .main-container {
+    flex: 0 0 auto;
+    display: flex;
+    width: calc(100% - 20rem);
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  #overlay {
+    display: none !important;
+  }
 }

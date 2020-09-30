@@ -28,6 +28,7 @@ const loadInsightsPage = async () => {
   const response = await fetch('/authorization', {});
   const responseData = await response.json();
   console.log(responseData.CUMULIO_API_KEY);
+  toggleMenu(false);
   if (responseData.CUMULIO_API_KEY && responseData.CUMULIO_API_TOKEN) {
     loadDashboard(responseData.CUMULIO_API_KEY, responseData.CUMULIO_API_TOKEN);
   }
