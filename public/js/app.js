@@ -22,16 +22,33 @@ const loadDashboard = (key, token) => {
   // add the dashboard to the #dashboard-container element
   Cumulio.addDashboard(dashboardOptions);
 }
+// Function to retrieve the dashboard authorization token from the platform's backend
+const getDashboardAuthorizationToken = async () => {
+  try {
+    const response = await fetch('/authorization', {});
+
+    // Fetch the JSON result with the Cumul.io Authorization key & token
+    const responseData = await response.json();
+    return responseData;
+  }
+  catch (e) {
+    // Display errors in the console
+    console.error(e);
+    return { error: 'Could not retrieve dashboard authorization token.' };
+  }
+};
 
 // function to load the insight page
 const loadInsightsPage = async () => {
-  const response = await fetch('/authorization', {});
-  const responseData = await response.json();
-  console.log(responseData.CUMULIO_API_KEY);
-  toggleMenu(false);
-  if (responseData.CUMULIO_API_KEY && responseData.CUMULIO_API_TOKEN) {
-    loadDashboard(responseData.CUMULIO_API_KEY, responseData.CUMULIO_API_TOKEN);
+  const authorizationToken = await getDashboardAuthorizationToken();
+  console.log(authorizationToken.id + "  " + authorizationToken.token);
+  if (authorizationToken.id && authorizationToken.token) {
+    loadDashboard(authorizationToken.id, authorizationToken.token);
   }
+}
+
+const reloadDashboard = (city) => {
+  console.log(city);
 }
 
 const toggleMenu = (boolean) => {

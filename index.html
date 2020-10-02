@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="css/main.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Saira Semi Condensed' rel='stylesheet'>
   <!-- add cumul.io embed script or install & use cumulio-react, cumulio-react-native or angular lib ngx-cumulio -->
   <script type="text/javascript" src="https://cdn-a.cumul.io/js/cumulio.min.js"></script>
   <title>Example app</title>
@@ -14,7 +15,7 @@
     <div id="sidebar" class="d-flex flex-column h-100 text-white p-4">
         <!-- Company logo and name -->
         <div class="company-logo px-2 w-100 mb-5 mr-4">
-          <img src="/images/logo_with_white_text.png" onclick="toggleMenu(false)" />
+          <img src="/images/color_logo_white_text.png" width="50%"/>
         </div>
         <!-- User name and picture -->
         <div class="mb-4">
@@ -25,6 +26,16 @@
           </div>
         </div>
         <!-- menu list-->
+        <div class="pages small">
+            <ul class="list-unstyled text-uppercase p-0">
+              <li onclick="reloadDashboard('Los Angeles')">Los Angeles</li>
+              <li onclick="reloadDashboard('Delhi')">Delhi</li>
+              <li onclick="reloadDashboard('Istanbul')">Istanbul</li>
+              <li onclick="reloadDashboard('New York')">New York</li>
+              <li onclick="reloadDashboard('Paris')">Paris</li>
+              <li onclick="reloadDashboard('Beijng')">Beijng</li>
+            </ul>
+        </div>
         <div class="flex-fill"></div>
         <!-- Settings for integrated dashboard -->
         <div class="language-settings">
