@@ -1,3 +1,5 @@
+//const Cumulio = require("cumulio");
+
 // dashboard configuration for integration
 const dashboardId = 'e830af8d-bf1d-4918-963e-884b6c0fc569';
 
@@ -23,9 +25,9 @@ const loadDashboard = (key, token) => {
   Cumulio.addDashboard(dashboardOptions);
 }
 // Function to retrieve the dashboard authorization token from the platform's backend
-const getDashboardAuthorizationToken = async () => {
+const getDashboardAuthorizationToken = async (city) => {
   try {
-    const response = await fetch('/authorization', {});
+    const response = await fetch(`/authorization${city ? '?city=' + city : ''}`, {});
 
     // Fetch the JSON result with the Cumul.io Authorization key & token
     const responseData = await response.json();
@@ -47,7 +49,10 @@ const loadInsightsPage = async () => {
   }
 }
 
-const reloadDashboard = (city) => {
+const reloadDashboard = async (city) => {
+  const authorizationToken = await getDashboardAuthorizationToken(city);
+  Cumulio.setAuthorization(authorizationToken.id, authorizationToken.token, {dashboardId : dashboardId, container : '#dashboard-container'});
+  Cumulio.refreshData();
   console.log(city);
 }
 
