@@ -43,7 +43,6 @@ const getDashboardAuthorizationToken = async (city) => {
 // function to load the insight page
 const loadInsightsPage = async () => {
   const authorizationToken = await getDashboardAuthorizationToken();
-  console.log(authorizationToken.id + "  " + authorizationToken.token);
   if (authorizationToken.id && authorizationToken.token) {
     loadDashboard(authorizationToken.id, authorizationToken.token);
   }
@@ -53,7 +52,6 @@ const reloadDashboard = async (city) => {
   const authorizationToken = await getDashboardAuthorizationToken(city);
   Cumulio.setAuthorization(authorizationToken.id, authorizationToken.token, {dashboardId : dashboardId, container : '#dashboard-container'});
   Cumulio.refreshData();
-  console.log(city);
 }
 
 const toggleMenu = (boolean) => {
@@ -69,6 +67,5 @@ const toggleMenu = (boolean) => {
 
 // on page load
 window.onload = async () => {
-  console.log("Got to window load");
   loadInsightsPage();
 }

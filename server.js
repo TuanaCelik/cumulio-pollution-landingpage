@@ -14,7 +14,6 @@ const client = new Cumulio({
 app.use(express.static(join(__dirname, 'public')));
 
 app.get('/authorization', (req, res) => {
-    console.log(req);
     const options = {
         type: 'temporary',
         expiry: '1 day',
@@ -27,7 +26,6 @@ app.get('/authorization', (req, res) => {
     client.create('authorization', options).then((result) => {
         return res.status(200).json(result);
     });
-    //return res.status(200).json(process.env);
 });
 
 app.get('/*', (req, res) => {
