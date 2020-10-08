@@ -53,18 +53,6 @@ const reloadDashboard = async (city) => {
   Cumulio.setAuthorization(authorizationToken.id, authorizationToken.token, {dashboardId : dashboardId, container : '#dashboard-container'});
   Cumulio.refreshData();
 }
-
-const toggleMenu = (boolean) => {
-  if (boolean) {
-    document.getElementById('sidebar').classList.add('open');
-    document.getElementById('overlay').classList.add('open');
-  }
-  else {
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('overlay').classList.remove('open');
-  }
-}
-
 // on page load
 window.onload = async () => {
   loadInsightsPage();
